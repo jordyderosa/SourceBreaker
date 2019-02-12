@@ -54,7 +54,7 @@ PARAM -> title
 ATTRIBUTES-> Accept : application/json
              Authorization : Authorization: Bearer valid_token
 
-http://yourhost/the_path_of_this_repo/public/api/tasks
+http://yourhost/api/tasks
 
 ## To Delete a task
 
@@ -62,7 +62,7 @@ METHOD -> DELETE
 ATTRIBUTES-> Accept : application/json
              Authorization : Authorization: Bearer valid_token
 
-http://yourhost/the_path_of_this_repo/public/api/tasks/{id}
+http://yourhost/api/tasks/{id}
 
 ## To Mark Task as done
 
@@ -70,7 +70,7 @@ METHOD -> PUT
 ATTRIBUTES-> Accept : application/json
              Authorization : Authorization: Bearer valid_token
 
-http://yourhost/the_path_of_this_repo/public/api/tasks/{id}
+http://yourhost/api/tasks/{id}
 
 ## To Get a list of all tasks
 
@@ -78,7 +78,7 @@ METHOD -> GET
 ATTRIBUTES-> Accept : application/json
              Authorization : Authorization: Bearer valid_token
 
-http://yourhost/the_path_of_this_repo/public/api/tasks
+http://yourhost/api/tasks
 
 
 ## To Get a list of tasks added by this user
@@ -87,12 +87,12 @@ METHOD -> GET
 ATTRIBUTES-> Accept : application/json
              Authorization : Authorization: Bearer valid_token
 
-http://yourhost/the_path_of_this_repo/public/api/user/tasks
+http://yourhost/api/user/tasks
 
 
 ## To Register a new user
 
-http://yourhost/the_path_of_this_repo/public/register
+http://yourhost/register
 
 ## To Get a valid token to use for the requests
 
@@ -103,7 +103,7 @@ ATTRIBUTES-> grant_type:password
              username:user's email address
              password:user's password
 
-http://yourhost/the_path_of_this_repo/public/oauth/token
+http://yourhost/oauth/token
 
 
 Enjoy
