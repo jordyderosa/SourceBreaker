@@ -7,63 +7,97 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## About Porject
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+The project use Laravel framework with Observer Design and Repository Pattern . Thinking about developing a To Do List API service the first thing that comes in my mind was the Observer Design Pattern: in the future maybe you would like to add some more stuff to the project according to what happens to the that task (creating, updating, deleting). Observer Design Patter make this kind of improvement super simple. 
+Injecting the repository into the controller's constructor you make it very descriptive, simple and easy to understand. Repository Desing Pattern isolate your code from the persistance and let you migrate this solution to other systems that maybe haven't Eloquent or MYSQL DB. A new repository have to implements the TaskInterface and , of course, a new Observer class listening to creating, updating .... and so on events. 
+This project , with more time , could be improved but this solution seems to be very abstracted. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installing
+Download this project or clone it. Now you have to install the dependeces in order to use this project, so from the project's root you have to launch the command 
+```sh
+composer install
+```
+Then you have to copy .env.example to create your brand new .env config file. From command line you can launch :
+Windows 
+```sh
+copy .env.example .env 
+```
+Linux
+```sh
+cp .env.example .env 
+```
+Then you have to change database settings in your .env. Now you're able to create the table into your db. To do it you should now launch the command 
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+```sh
+php artisan migrate
+```
 
-## Learning Laravel
+Final step create the APP KEY by launching the command
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+```sh
+php artisan key:generate
+```
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+## To Create a task
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+METHOD -> POST
+PARAM -> title
+ATTRIBUTES-> Accept : application/json
+             Authorization : Authorization: Bearer valid_token
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
+http://yourhost/the_path_of_this_repo/public/api/tasks
 
-## Contributing
+## To Delete a task
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+METHOD -> DELETE
+ATTRIBUTES-> Accept : application/json
+             Authorization : Authorization: Bearer valid_token
 
-## Security Vulnerabilities
+http://yourhost/the_path_of_this_repo/public/api/tasks/{id}
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## To Mark Task as done
 
-## License
+METHOD -> PUT
+ATTRIBUTES-> Accept : application/json
+             Authorization : Authorization: Bearer valid_token
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+http://yourhost/the_path_of_this_repo/public/api/tasks/{id}
+
+## To Get a list of all tasks
+
+METHOD -> GET
+ATTRIBUTES-> Accept : application/json
+             Authorization : Authorization: Bearer valid_token
+
+http://yourhost/the_path_of_this_repo/public/api/tasks
+
+
+## To Get a list of tasks added by this user
+
+METHOD -> GET
+ATTRIBUTES-> Accept : application/json
+             Authorization : Authorization: Bearer valid_token
+
+http://yourhost/the_path_of_this_repo/public/api/user/tasks
+
+
+## To Register a new user
+
+http://yourhost/the_path_of_this_repo/public/register
+
+## To Get a valid token to use for the requests
+
+METHOD -> POST
+ATTRIBUTES-> grant_type:password
+             client_secret:the secret of the Laravel Password Grant Client under table oauth_clients
+             client_id:the oauth_clients.id of the secret above
+             username:user's email address
+             password:user's password
+
+http://yourhost/the_path_of_this_repo/public/oauth/token
+
+
+Enjoy
+
