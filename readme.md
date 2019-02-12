@@ -32,6 +32,10 @@ Then you have to change database settings in your .env. Now you're able to creat
 ```sh
 php artisan migrate
 ```
+The instaling keys for Auth2 Server. Launch the command
+```sh
+php artisan passport:install
+```
 
 Final step create the APP KEY by launching the command
 
