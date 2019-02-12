@@ -9,7 +9,7 @@
 
 ## About Porject
 
-The project use Laravel framework with Observer Design and Repository Pattern . Thinking about developing a To Do List API service the first thing that comes in my mind was the Observer Design Pattern: in the future maybe you would like to add some more stuff to the project according to what happens to the that task (creating, updating, deleting). Observer Design Patter make this kind of improvement super simple. 
+The project use Laravel framework with Observer and Repository Design Pattern . Thinking about developing a To Do List API service the first thing that comes in my mind was the Observer Design Pattern: in the future maybe you would like to add some more stuff to the project according to what happens to the that task (creating, updating, deleting). Observer Design Patter make this kind of improvement super simple. 
 Injecting the repository into the controller's constructor you make it very descriptive, simple and easy to understand. Repository Desing Pattern isolate your code from the persistance and let you migrate this solution to other systems that maybe haven't Eloquent or MYSQL DB. A new repository have to implements the TaskInterface and , of course, a new Observer class listening to creating, updating .... and so on events. 
 This project , with more time , could be improved but this solution seems to be very abstracted. 
 
