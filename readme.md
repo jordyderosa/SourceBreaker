@@ -42,6 +42,9 @@ Final step create the APP KEY by launching the command
 ```sh
 php artisan key:generate
 ```
+```sh
+php artisan serve
+```
 
 ## To Create a task
 
